@@ -188,8 +188,8 @@ section {
 
 .hero {
   padding: 90px 0 110px;
-  background: #1a1a1a;
-  color: #e6e6e6;
+  background: #f7f4ee;
+  color: #1a1a1a;
 }
 
 .hero-layout {
@@ -201,13 +201,13 @@ section {
 
 .hero-content h1 {
   font-size: clamp(36px, 4vw, 56px);
-  color: #ffffff;
+  color: #1a1a1a;
 }
 
 .hero-text {
   font-size: 18px;
   max-width: 540px;
-  color: #e6e6e6;
+  color: #5a5a5a;
 }
 
 .hero-actions {
@@ -218,29 +218,29 @@ section {
 }
 
 .hero .eyebrow {
-  color: #e6e6e6;
+  color: #5a5a5a;
 }
 
 .hero .button--primary {
-  background: #ffffff;
-  color: #1a1a1a;
+  background: #1a1a1a;
+  color: #ffffff;
 }
 
 .hero .button--primary:hover,
 .hero .button--primary:focus-visible {
-  background: #e6e6e6;
-  color: #1a1a1a;
+  background: #1c1c1c;
+  color: #ffffff;
 }
 
 .hero .button--ghost {
-  border-color: #ffffff;
-  color: #ffffff;
+  border-color: #1c1c1c;
+  color: #1c1c1c;
 }
 
 .hero .button--ghost:hover,
 .hero .button--ghost:focus-visible {
-  background: #ffffff;
-  color: #1a1a1a;
+  background: #1c1c1c;
+  color: #ffffff;
 }
 
 .hero-metrics {
@@ -250,16 +250,16 @@ section {
 }
 
 .metric {
-  background: #1a1a1a;
+  background: #fbf9f5;
   border-radius: var(--radius-md);
   padding: 18px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px #e6e2da;
 }
 
 .metric-value {
   font-weight: 600;
   font-size: 20px;
-  color: #ffffff;
+  color: #1a1a1a;
   display: block;
 }
 
@@ -267,7 +267,7 @@ section {
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #e6e6e6;
+  color: #5a5a5a;
 }
 
 .hero-media {
