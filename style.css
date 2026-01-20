@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
-
 :root {
+  --font-display: "GT Alpinas", "Playfair Display", "Times New Roman", serif;
+  --font-body: "Inter Display", "Inter", "Helvetica Neue", Arial, sans-serif;
   --green-900: #0e2f2b;
   --green-800: #153b36;
   --green-700: #1f4c46;
@@ -15,13 +15,20 @@
   --shadow-subtle: 0 12px 30px rgba(14, 47, 43, 0.12);
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: "Inter Display", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
   color: var(--ink-700);
   background: var(--sand-50);
   line-height: 1.7;
@@ -41,7 +48,7 @@ a {
 h1,
 h2,
 h3 {
-  font-family: "GT Alpinas", "Playfair Display", "Times New Roman", serif;
+  font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 1.2;
@@ -56,6 +63,10 @@ p {
 .container {
   width: min(1200px, 90vw);
   margin: 0 auto;
+}
+
+section {
+  scroll-margin-top: 110px;
 }
 
 .eyebrow {
@@ -120,7 +131,7 @@ p {
 }
 
 .logo {
-  font-family: "GT Alpinas", "Playfair Display", "Times New Roman", serif;
+  font-family: var(--font-display);
   font-size: 20px;
   letter-spacing: 0.04em;
   display: flex;
@@ -391,6 +402,38 @@ p {
   box-shadow: var(--shadow-soft);
 }
 
+.form-card--embed {
+  display: grid;
+  gap: 20px;
+}
+
+.notion-embed {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(14, 47, 43, 0.12);
+  background: #fbf9f6;
+}
+
+.notion-embed iframe {
+  width: 100%;
+  min-height: 640px;
+  border: 0;
+  background: #fbf9f6;
+}
+
+.form-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 14px;
+  color: rgba(17, 17, 17, 0.7);
+}
+
+.form-fallback p {
+  margin: 0;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -521,7 +564,7 @@ textarea:focus {
 }
 
 .footer-logo {
-  font-family: "GT Alpinas", "Playfair Display", "Times New Roman", serif;
+  font-family: var(--font-display);
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -578,6 +621,13 @@ textarea:focus {
 
   .hero-metrics {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .form-fallback {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 

@@ -1,6 +1,9 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
   const smoothLinks = document.querySelectorAll('a[href^="#"]');
   smoothLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
@@ -13,8 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       event.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-      history.pushState(null, "", targetId);
+      target.scrollIntoView({
+        behavior: prefersReducedMotion ? "auto" : "smooth",
+        block: "start",
+      });
+      if (typeof history !== "undefined" && history.pushState) {
+        try {
+          history.pushState(null, "", targetId);
+        } catch (error) {
+          window.location.hash = targetId;
+        }
+      }
     });
   });
 
@@ -22,6 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeItem = (item) => {
     const panel = item.querySelector(".faq-panel");
     const button = item.querySelector(".faq-question");
+    if (!panel || !button) {
+      return;
+    }
     item.classList.remove("is-open");
     button.setAttribute("aria-expanded", "false");
     panel.style.maxHeight = "0px";
@@ -31,6 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const openItem = (item) => {
     const panel = item.querySelector(".faq-panel");
     const button = item.querySelector(".faq-question");
+    if (!panel || !button) {
+      return;
+    }
     item.classList.add("is-open");
     button.setAttribute("aria-expanded", "true");
     panel.style.maxHeight = `${panel.scrollHeight}px`;
@@ -39,6 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   faqItems.forEach((item) => {
     const button = item.querySelector(".faq-question");
+    if (!button) {
+      return;
+    }
     button.addEventListener("click", () => {
       const isOpen = item.classList.contains("is-open");
       faqItems.forEach((other) => {
@@ -62,6 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
     faqItems.forEach((item) => {
       if (item.classList.contains("is-open")) {
         const panel = item.querySelector(".faq-panel");
+        if (!panel) {
+          return;
+        }
         panel.style.maxHeight = `${panel.scrollHeight}px`;
       }
     });
