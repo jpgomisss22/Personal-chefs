@@ -466,6 +466,27 @@ section {
   color: #5a5a5a;
 }
 
+.form-page {
+  min-height: calc(100vh - 200px);
+}
+
+.form-page-layout {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 32px;
+}
+
+.form-page-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.form-page-subtitle {
+  color: #5a5a5a;
+}
+
 .form-layout {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
