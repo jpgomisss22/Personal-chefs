@@ -1,5 +1,5 @@
 :root {
-  --font-display: "GT Alpinas", "Playfair Display", "Times New Roman", serif;
+  --font-display: "GT Alpina", "Playfair Display", "Times New Roman", serif;
   --font-body: "Inter Display", "Inter", "Helvetica Neue", Arial, sans-serif;
   --green-900: #0e2f2b;
   --green-800: #153b36;
@@ -66,7 +66,14 @@ p {
 }
 
 section {
-  scroll-margin-top: 120px; 
+  scroll-margin-top: 110px;
+}
+
+.anchor {
+  display: block;
+  position: relative;
+  top: -110px;
+  height: 0;
 }
 
 .eyebrow {
@@ -124,7 +131,7 @@ section {
 
 .header-inner {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   align-items: center;
   padding: 18px 0;
   gap: 32px;
@@ -142,7 +149,7 @@ section {
 
 .nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   gap: 28px;
   font-size: 14px;
   letter-spacing: 0.08em;
@@ -228,7 +235,7 @@ section {
 .hero-media {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(6, 50px);
+  grid-template-rows: repeat(6, 72px);
   gap: 18px;
 }
 
@@ -306,24 +313,14 @@ section {
 }
 
 .steps,
-.occasions,
+.benefits,
 .faq,
 .form-section {
   padding: 100px 0;
 }
 
-.occasions {
-  background: var(--green-900);
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.occasions h2,
-.occasions h3 {
-  color: var(--white);
-}
-
-.occasions .eyebrow {
-  color: rgba(255, 255, 255, 0.6);
+.benefits {
+  background: var(--white);
 }
 
 .section-intro {
@@ -332,14 +329,14 @@ section {
 }
 
 .step-grid,
-.occasion-grid {
+.benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 26px;
 }
 
 .step-card,
-.occasion-card {
+.benefit-card {
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: 28px;
@@ -371,10 +368,38 @@ section {
   height: 26px;
 }
 
-.occasion-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.76);
+.benefits-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.benefit-card h3 {
+  margin-bottom: 18px;
+}
+
+.benefit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.benefit-list li {
+  padding-left: 22px;
+  position: relative;
+}
+
+.benefit-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green-700);
 }
 
 .form-section {
@@ -395,43 +420,20 @@ section {
   box-shadow: var(--shadow-subtle);
 }
 
-.form-card {
+.form-embed {
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: 18px;
   box-shadow: var(--shadow-soft);
 }
 
-.form-card--embed {
-  display: grid;
-  gap: 20px;
-}
-
-.notion-embed {
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(14, 47, 43, 0.12);
-  background: #fbf9f6;
-}
-
-.notion-embed iframe {
+.form-embed iframe {
   width: 100%;
-  min-height: 640px;
+  min-height: 600px;
   border: 0;
+  border-radius: 14px;
   background: #fbf9f6;
-}
-
-.form-fallback {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  font-size: 14px;
-  color: rgba(17, 17, 17, 0.7);
-}
-
-.form-fallback p {
-  margin: 0;
+  display: block;
 }
 
 .form-grid {
@@ -482,15 +484,15 @@ textarea:focus {
 
 .faq-list {
   display: grid;
-  gap: 18px;
+  gap: 26px;
 }
 
 .faq-item {
-  background: var(--white);
+  background: #fbf7f1;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 18px 40px rgba(14, 47, 43, 0.08);
   overflow: hidden;
-  border: 1px solid rgba(14, 47, 43, 0.08);
+  border: none;
 }
 
 .faq-question {
@@ -500,18 +502,23 @@ textarea:focus {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
-  font-size: 16px;
+  padding: 26px 28px;
+  font-size: 18px;
   font-weight: 500;
   color: var(--ink-900);
   cursor: pointer;
+}
+
+.faq-question span:first-child {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
 }
 
 .faq-icon {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid rgba(14, 47, 43, 0.3);
+  border: 1px solid rgba(14, 47, 43, 0.2);
   position: relative;
   flex-shrink: 0;
 }
@@ -522,33 +529,40 @@ textarea:focus {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 12px;
+  width: 14px;
   height: 1.5px;
   background: var(--green-900);
-  transform: translate(-50%, -50%);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+  transition: transform 0.3s ease;
 }
 
 .faq-icon::after {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
+.faq-icon::before {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.faq-item.is-open .faq-icon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
 .faq-item.is-open .faq-icon::after {
-  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .faq-panel {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  padding: 0 24px;
-  transition: max-height 0.35s ease, opacity 0.25s ease;
-  will-change: max-height, opacity;
+  padding: 0 28px;
+  transition: max-height 0.35s ease, opacity 0.35s ease;
 }
 
 .faq-panel p {
   margin: 0;
-  padding-bottom: 22px;
+  padding-bottom: 26px;
   color: rgba(17, 17, 17, 0.75);
 }
 
@@ -564,23 +578,13 @@ textarea:focus {
   text-align: center;
 }
 
-.footer-logo {
-  font-family: var(--font-display);
-  font-size: 22px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  display: flex;
-  flex-direction: column;
-}
-
 .footer-links {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
   justify-content: center;
   font-size: 14px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .footer-copy {
@@ -588,6 +592,12 @@ textarea:focus {
   margin: 0 auto;
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
+}
+
+.footer-meta {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
 }
 
 @media (max-width: 1024px) {
@@ -612,7 +622,7 @@ textarea:focus {
   }
 
   .step-grid,
-  .occasion-grid {
+  .benefits-grid {
     grid-template-columns: 1fr;
   }
 
@@ -626,9 +636,8 @@ textarea:focus {
 }
 
 @media (max-width: 720px) {
-  .form-fallback {
-    flex-direction: column;
-    align-items: flex-start;
+  .form-embed {
+    padding: 14px;
   }
 }
 
